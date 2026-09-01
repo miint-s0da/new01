@@ -322,3 +322,65 @@ const counterObserver =
 
 
 counterObserver.observe(numbersSection);
+
+/* =========================
+   Mobile Menu
+========================= */
+
+const mobileMenuButton =
+    document.querySelector('.mobile-menu-button');
+
+const mobileMenu =
+    document.querySelector('.mobile-menu');
+
+const header =
+    document.querySelector('.header');
+
+
+mobileMenuButton.addEventListener('click', () => {
+
+    const isOpen =
+        mobileMenu.classList.toggle('active');
+
+    mobileMenuButton.classList.toggle(
+        'active',
+        isOpen
+    );
+
+    header.classList.toggle(
+        'menu-open',
+        isOpen
+    );
+
+    mobileMenuButton.setAttribute(
+        'aria-expanded',
+        isOpen
+    );
+
+});
+
+
+/* 메뉴 클릭 시 닫기 */
+
+const mobileMenuLinks =
+    document.querySelectorAll('.mobile-menu a');
+
+
+mobileMenuLinks.forEach((link) => {
+
+    link.addEventListener('click', () => {
+
+        mobileMenu.classList.remove('active');
+
+        mobileMenuButton.classList.remove('active');
+
+        header.classList.remove('menu-open');
+
+        mobileMenuButton.setAttribute(
+            'aria-expanded',
+            'false'
+        );
+
+    });
+
+});
